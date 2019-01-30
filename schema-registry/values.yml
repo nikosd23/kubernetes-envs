@@ -1,0 +1,19 @@
+resources:
+  requests:
+    cpu: 2048m
+    memory: 2Gi
+  limits:
+    cpu: 3072m
+    memory: 4Gi
+
+## If `Kafka.Enabled` is `false`, kafkaStore.overrideBootstrapServers must be provided for Master Election.
+## You can list load balanced service endpoint, or list of all brokers (which is hard in K8s).  e.g.:
+## overrideBootstrapServers: "PLAINTEXT://dozing-prawn-kafka-headless:9092"
+## Charts uses Kafka Coordinator Master Election: https://docs.confluent.io/current/schema-registry/docs/design.html#kafka-coordinator-master-election
+kafkaStore:
+  overrideBootstrapServers: "PLAINTEXT://kafka-headless:9092"
+
+
+## Kafka Settings
+kafka:
+  enabled: false

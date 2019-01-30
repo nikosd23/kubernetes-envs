@@ -1,0 +1,44 @@
+rbacEnable: false
+
+ingress:
+  enabled: false
+
+lenses:
+  # zookeeper
+  ## Zookeepers should be behind a service, if so set one entry in the hosts
+  ## If your zookeepers are outside explicitly add them to the hosts.
+  zookeepers:
+    hosts:
+      - host: kafka-zookeeper
+        protocol: http
+        port: 2181
+        jmxPort: 9102
+
+  schemaRegistries:
+    hosts:
+      - host: sr-schema-registry
+        protocol: http
+        port: 8081
+        jmxPort: 9102
+
+  connectClusters:
+    enabled: false
+    # clusters:
+    #   - name: streamreactor
+    #     port: 8083
+    #     jmxPort: 9102
+    #     protocol: http
+    #     offsetsTopic: connect-offsets
+    #     statusTopic: connect-status
+    #     configTopic: connect-configs
+    #     authType:
+    #     username:
+    #     password:
+    #     hosts:
+    #       - connect-worker-1
+    #       - connect-worker-2
+    #       - connect-worker-3
+
+  # licenseUrl is a url pointing to the Lenses license
+  licenseUrl:
+
